@@ -12,6 +12,7 @@ def get_location_names():
 
 
 def find_price(size,total_sqft,loc,bath):
+    load_save_files()
     location_indx = __data_columns.index(loc.lower())
     predict_x = np.zeros(len(__data_columns))
     predict_x[0] = size
@@ -38,6 +39,8 @@ def load_save_files():
 
 	with open("./realestate_price_prediction.pickle",'rb') as f:
 		__model = pickle.load(f)
-		print(type(__model))
 
 
+if (__name__=='__main__'):
+	print()
+	print(find_price(2,1000,'1st Phase JP Nagar',2))
